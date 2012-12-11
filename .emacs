@@ -97,7 +97,7 @@
 (add-to-list 'load-path "~/.emacs.d/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 (require 'color-theme-solarized)
-(color-theme-solarized-dark)
+;; (color-theme-solarized-dark)
 
 ;; emacs transperency background functions
 ;; (set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))

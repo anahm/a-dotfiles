@@ -30,19 +30,25 @@ set hidden
 set wrap						" please wrap lines
 set textwidth=80				" max length per line = 80 char
 set backspace=indent,eol,start	" backspacing allowed in insert mode	
+
+set guifont="Anonymous\ Pro\ 11"
 set number						" show line numbers
 "set relativenumber				" show relative line numbers
 set showmatch 					" show matching paren
 
 	" stuff having to do with tabbing and indenting
+set smartindent
+set expandtab
 set tabstop=4					" tab = 4 spaces
 set autoindent					" autoindenting always on
-set copyindent					" copy previous indentation for autoindenting
+set copyindent					" copy previous indentation for autoindent
 set shiftwidth=4 				" num spaces for autoindenting
-set smarttab 					" insert tabs of line start on shiftwidth, not tabstop
+set smarttab 					" insert tabs of line start on shiftwidth, 
+   								" not tabstop
 
 	" searching stuff
-set smartcase						" ignore case if search pattern lowercase, otherwise case-sensitive
+set smartcase						" ignore case if search pattern 
+									" lowercase, otherwise case-sensitive
 set hlsearch 						" highlight search terms
 set incsearch 						" shows search matches as you type
 		" new command to clear highlighted searches
@@ -54,9 +60,10 @@ set undolevels=1000 			" go back as much as you remember
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
 	
-	" preventing vim from writing a backup file -- HUGE POTENTIAL TO SCREW ME OVER 
-set nobackup 
-set noswapfile
+	" preventing vim from writing a backup file
+	" HUGE POTENTIAL TO SCREW ME OVER 
+" set nobackup 
+" set noswapfile
 
 " basic filetype schtuff
 	" enable indenting intel. based on syntax rules of the file type
@@ -83,6 +90,13 @@ if &t_Co >= 256 || has("gui_running")
 	endif
    	colorscheme ir_black 
 endif
+
+	" highlighting 80+ characters
+	" http://stackoverflow.com/questions/7797593/highlighting-more-than-80-
+	" characters-with-a-non-standard-colorscheme
+
+highlight OverLength ctermbg=green ctermfg=white guibg=#59292
+match OverLength /\%81v.\+/
 
 if &t_Co > 2 || has("gui_running")
    " switch syntax highlighting on, when the terminal has colors
