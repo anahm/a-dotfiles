@@ -59,12 +59,6 @@ set history=1000 				" remember commands / search history
 set undolevels=1000 			" go back as much as you remember
 set wildignore=*.swp,*.bak,*.pyc,*.class
 
-	
-	" preventing vim from writing a backup file
-	" HUGE POTENTIAL TO SCREW ME OVER 
-" set nobackup 
-" set noswapfile
-
 " basic filetype schtuff
 	" enable indenting intel. based on syntax rules of the file type
 filetype plugin indent on
@@ -78,9 +72,6 @@ endif
 
 " gui / ui stuff
 
-	" columns
-set columns=80
-
 	" colorscheme
 if &t_Co >= 256 || has("gui_running")
 	if has("mac")
@@ -92,8 +83,6 @@ if &t_Co >= 256 || has("gui_running")
 endif
 
 	" highlighting 80+ characters
-	" http://stackoverflow.com/questions/7797593/highlighting-more-than-80-
-	" characters-with-a-non-standard-colorscheme
 
 highlight OverLength ctermbg=green ctermfg=white guibg=#59292
 match OverLength /\%81v.\+/
@@ -107,36 +96,12 @@ endif
 "set list
 "set listchars=tab:\|\ ,trail:•,extends:>,precedes:<,nbsp:+
 
-	" pasting easier by temporarily switching into paste mode
-nmap <silent> ,p :set invpaste<CR>:set paste?<CR>
-
-	" jumps to next line in editor, rather than then next new line
-nnoremap j gj
-nnoremap k gk
-
-	" press space to turn off highlighting and clear any msg already displayed
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
 	" show current mode
 set showmode
-
-	" hide mouse while typing
-set mousehide
-
-	" make command line two lines high
-set ch=2
 
 	" Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
-	" Easier moving in tabs and windows
-map <C-J> <C-W>j<C-W>_
-map <C-K> <C-W>k<C-W>_
-map <C-L> <C-W>l<C-W>_
-map <C-H> <C-W>h<C-W>_ 
-
-
-""""""""""""""""""""""" PLUG-IN SETTINGS """"""""""""""""""""""""""""
 
 " NERD Tree plugin settings
 
@@ -152,4 +117,4 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
                    \ '\.embed\.manifest$', '\.embed\.manifest.res$',
                    \ '\.intermediate\.manifest$', '^mt.dep$' ]
 
-" fugitive.vim plugin
+set tags=tags;/
