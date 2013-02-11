@@ -46,8 +46,9 @@ set hlsearch
 set incsearch
 
 " highlighting things
-highlight OverLength ctermbg=green ctermfg=white guibg=#59292
+highlight OverLength ctermbg=green ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
 
 " Trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -73,16 +74,24 @@ endif
 
 
 """"""""""""" keyboard shortcuts """"""""""""
+" faster tab navigation
+nnoremap <S-tab> :tabprevious<CR>
+nnoremap <tab> :tabnext<CR>
 
 " mapleader = free key to place custom mappings
 let mapleader=","
 
 " see http://majutsushi.github.com/tagbar/
-let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8/bin/ctags'
+" let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8/bin/ctags'
+nnoremap <leader>b :MRU<CR>
 nnoremap <leader>c :TagbarToggle<CR>
+nnoremap <leader>f :let @" = expand('%')<CR>
+nnoremap <leader>l :NERDTreeToggle<CR>
+nnoremap <leader>o :CtrlP<CR>
 nnoremap <leader>p :set invpaste<CR>
+nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>w :tabclose<CR>
 
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -90,4 +99,20 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " ; > :
 nnoremap ; :
 
+" Autocomplete.
+set wildmode=longest,list,full
+set wildmenu
+set wildignore+=*.o,*.pyc,*.aux,*.cmi,*.cmo,*.cmx
+set completeopt=menu,preview
 
+" make copy/pasting nice
+function! ToggleMouse()
+    if &mouse == 'a'
+        set mouse=r
+        set nonu
+    else
+        set mouse=a
+        set nu
+    endif
+endfunction
+nnoremap <leader>m :call ToggleMouse()<CR>
