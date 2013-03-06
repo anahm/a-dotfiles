@@ -1,0 +1,28 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+
+alias os='cd ~/cs161/os161'
+alias conf='cd ~/cs161/os161/kern/conf'
+alias root='cd ~/cs161/root'
+
+alias km='cd ~/cs161/os161/kern/compile/ASST2;
+          bmake depend;
+          bmake;
+          bmake install'
+alias kr='cd ~/cs161/root;
+          sys161 kernel'
+alias kg='cd ~/cs161/root;
+          os161-gdb kernel'
+alias um='cd ~/cs161/os161/user;
+          bmake depend;
+          bmake;
+          bmake install'
+
+
+PATH="$HOME"/cs161/sys161/bin:"$HOME"/cs161/sys161/tools/bin:$PATH
