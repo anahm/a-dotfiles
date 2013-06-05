@@ -1,27 +1,43 @@
 "
 " a nahm vimrc
 "
-
 set encoding=utf-8
-set nocompatible		" must be first line
+set nocompatible        " must be first line
 
-" Pathogen
-filetype on
-call pathogen#infect()
+" vundle
+filetype off 
+set rtp+=~/.vim/autoload/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
 
+" plug-ins
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vim-scripts/trailing-whitespace'
+
+" syntax files
+Bundle 'tpope/vim-markdown'
+
+" color schemes
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'tomasr/molokai'
+Bundle 'vim-scripts/Skittles-Dark'
+Bundle 'vim-scripts/wombat256.vim'
+Bundle 'wgibbs/vim-irblack'
 
 " basic viewing stuff
 set guifont="Anonymous\ Pro\ 11"
 set background=dark
 set t_Co=256
-colorscheme wombat
+" colorscheme wombat256
 set textwidth=80
 
 set ruler
 set title
 set number
 "set relativenumber
-set showmatch 					" show matching paren
+set showmatch                   " show matching paren
 set showmode
 set showcmd
 
@@ -32,7 +48,7 @@ set ttyfast                     " send more chars for redraws
 
 " stuff having to do with tabbing and indenting
 set expandtab
-set tabstop=4					" tab = 4 spaces
+set tabstop=4                   " tab = 4 spaces
 set autoindent
 set shiftwidth=4
 set smarttab
@@ -46,16 +62,16 @@ set hlsearch
 set incsearch
 
 " highlighting things
-highlight OverLength ctermbg=green ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=green ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
 
 
 " Trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-au ColorScheme * highlight ExtraWhitespace guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" au ColorScheme * highlight ExtraWhitespace guibg=red
+" au BufEnter * match ExtraWhitespace /\s\+$/
+" au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+" au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
 " Allows for ctags -- awesomeness
 
@@ -116,3 +132,4 @@ function! ToggleMouse()
     endif
 endfunction
 nnoremap <leader>m :call ToggleMouse()<CR>
+
