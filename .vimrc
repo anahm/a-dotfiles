@@ -6,7 +6,7 @@ set nocompatible        " must be first line
 
 " vundle
 filetype off 
-set rtp+=~/.vim/autoload/vundle
+set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
