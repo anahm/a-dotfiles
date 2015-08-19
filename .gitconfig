@@ -1,10 +1,6 @@
 [core]
     editor = vim
 
-[user]
-	name = Ali Nahm
-	email = anahm@college.harvard.edu
-
 [color]
     grep = auto
     interactive = auto
