@@ -11,6 +11,10 @@
 [alias]
     st = status
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
+    d = "!cd ${GIT_PREFIX:-.} && git diff && [[ -z \"$(git diff)\" ]] && git diff --staged && [[ -z \"$(git diff --staged)\" ]] && git log -p master.."
+    l = "!cd ${GIT_PREFIX:-.} && if [[ -z \"$(git diff --name-only && git diff --name-only --staged)\" ]]; then git log --stat master..; else git status; fi"
 
     changes = diff --name-status -r
     diffstat = diff --stat -r
@@ -19,3 +23,4 @@
     whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
     whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
     unstage = reset HEAD --
+
