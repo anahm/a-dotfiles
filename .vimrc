@@ -19,14 +19,19 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/trailing-whitespace'
 Bundle 'majutsushi/tagbar'
-Bundle 'autowitch/hive.vim'
+Bundle 'ambv/black'
 
 " plug-ins for specific files (per ab)
-Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-git'
 
 " syntax files
+Bundle 'fisadev/vim-isort'
 Bundle 'tpope/vim-markdown'
+Bundle 'tell-k/vim-autopep8'
+Bundle 'nvie/vim-flake8'
+Bundle 'posva/vim-vue'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'mxw/vim-jsx'
 
 " color schemes
 " Bundle 'nanotech/jellybeans.vim'
@@ -39,9 +44,10 @@ Bundle 'tpope/vim-markdown'
 set guifont="Anonymous\ Pro\ 11"
 set background=dark
 set t_Co=256
-set textwidth=80
-set colorcolumn=81
-au BufEnter * set colorcolumn=81
+set textwidth=100
+set colorcolumn=101
+highlight ColorColumn ctermbg=green guibg=green
+au BufEnter * set colorcolumn=101
 
 set ruler
 set title
@@ -52,6 +58,10 @@ set showmode
 set showcmd
 set autochdir
 
+" security issue
+:set modelines=0
+:set nomodeline
+
 " syntax pretty
 syntax enable
 filetype plugin indent on
@@ -59,9 +69,9 @@ set ttyfast                     " send more chars for redraws
 
 " stuff having to do with tabbing and indenting
 " note: edited per ab config
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 au BufWinEnter,BufNewFile * silent tab
 
@@ -81,7 +91,7 @@ set incsearch
 
 
 " Trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=red guibg=blue
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -149,12 +159,38 @@ nnoremap <leader>m :call ToggleMouse()<CR>
 " faster ctrl-p search
 "Only refreshes results every 100ms, so if type fast searches don't pile up
 let g:ctrlp_lazy_update = 100
-let g:ctrlp_user_command = 'find %s -type f | egrep -iv "(\.(eot|gif|gz|ico|jpg|jpeg|otf|png|psd|pyc|svg|ttf|woff|zip)$)|(/\.)|((^|\/)tmp\/)"' "Quicker indexing"
+let g:ctrlp_user_command = 'find %s -type f | egrep -iv "(\.(eot|gif|gz|ico|jpg|jpeg|otf|png|psd|pyc|svg|ttf|woff|zip|build|deploy)$)|(/\.)|((^|\/)tmp\/|node_modules)"' "Quicker indexing"
 
-" Generating hive files from Hive++ data
-function! CopyHivePP(...)
-    write
-    " I think right now this only will work on macs
-    execute '! hive++ ' .  shellescape(a:1) ' -d | pbcopy '
-endfunction
-au BufNewFile,BufRead *.hql noremap <leader>h :call CopyHivePP(expand("%"))  <CR>
+" TODO switch to silver searcher
+" let g:ctrlp_custom_ignore = '\v[\/](node_modules|symlinks|dist|venv)|(\.(build|deploy))$'
+
+"" vi settings to match vscode settings
+" https://github.com/humu-com/code/blob/master/.vscode/settings.json
+
+" Autopep8
+nnoremap <leader>ap :Autopep8<CR>
+let g:autopep8_max_line_length=100
+let g:autopep8_aggressive=2  " add more aggressive options (--aggressive)
+let g:autopep8_indent_size=4
+
+" black doesn't support AutoFormatBuffer b/c it doesn't handle line ranges, so you need this
+" instead.
+" autocmd BufWritePre *.py execute ':Black'
+
+" Run iSort automatically on every save
+autocmd BufWritePost *.py Isort
+
+"" Flake8
+let g:flake8_show_in_gutter=1  " show warnings/errors in left gutter
+let g:flake8_show_in_file=0  " don't show marks in the file
+let g:flake8_error_marker='✗'
+let g:flake8_warning_marker='⚠'
+let g:black_linelength=100
+let g:black_skip_string_normalization=1
+autocmd FileType python map <buffer> <leader>fl :call Flake8()<CR>
+autocmd BufWritePost *.py call Flake8()
+
+""" Black
+let g:black_linelength=100
+let g:black_skip_string_normalization=1
+" autocmd BufWritePre *.py execute ':Black'
