@@ -9,7 +9,7 @@ export TERM=xterm-256color
 export PS1="\[\033[01;32m\]\d \t \w\$(__git_ps1) \[\033[00m\]\$ "
 
 if [ -f ~/.bashrc ]; then
-   source ~/.bashrc
+   . ~/.bashrc
 fi
 
 # autocomplete git (http://code-worrier.com/blog/autocomplete-git/)

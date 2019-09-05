@@ -2,6 +2,9 @@
 alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 alias jp='jupyter notebook'
 alias less='less -R'
+alias dot='cd ~/Documents/a-dotfiles'
+
+# alias dockerkill='docker rm $(docker ps -a -q -f status=exited)'
 
 # bash command tab completion
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
@@ -46,4 +49,13 @@ function copy_data {
   rsync -av -e ssh --delete ${source_dir} ali_nahm@${remote_server}:${dest_dir}
 }
 
+# node downloads
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Adding humu config
+if [ -f $HOME/.humurc ]; then
+    . $HOME/.humurc
+fi
 
