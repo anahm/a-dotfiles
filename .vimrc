@@ -28,7 +28,6 @@ Bundle 'tpope/vim-git'
 Bundle 'fisadev/vim-isort'
 Bundle 'tpope/vim-markdown'
 Bundle 'tell-k/vim-autopep8'
-Bundle 'nvie/vim-flake8'
 Bundle 'posva/vim-vue'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'mxw/vim-jsx'
@@ -179,16 +178,6 @@ let g:autopep8_indent_size=4
 
 " Run iSort automatically on every save
 autocmd BufWritePost *.py Isort
-
-"" Flake8
-let g:flake8_show_in_gutter=1  " show warnings/errors in left gutter
-let g:flake8_show_in_file=0  " don't show marks in the file
-let g:flake8_error_marker='✗'
-let g:flake8_warning_marker='⚠'
-let g:black_linelength=100
-let g:black_skip_string_normalization=1
-autocmd FileType python map <buffer> <leader>fl :call Flake8()<CR>
-autocmd BufWritePost *.py call Flake8()
 
 """ Black
 let g:black_linelength=100
