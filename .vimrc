@@ -25,7 +25,6 @@ Bundle 'ambv/black'
 Bundle 'tpope/vim-git'
 
 " syntax files
-Bundle 'fisadev/vim-isort'
 Bundle 'tpope/vim-markdown'
 Bundle 'tell-k/vim-autopep8'
 Bundle 'posva/vim-vue'
@@ -175,9 +174,6 @@ let g:autopep8_indent_size=4
 " black doesn't support AutoFormatBuffer b/c it doesn't handle line ranges, so you need this
 " instead.
 " autocmd BufWritePre *.py execute ':Black'
-
-" Run iSort automatically on every save
-autocmd BufWritePost *.py Isort
 
 """ Black
 let g:black_linelength=100
