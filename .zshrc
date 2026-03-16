@@ -28,23 +28,6 @@ else
   export EDITOR='mvim'
 fi
 
-# Load bash config for legacy aliases/functions
-if [ -f $HOME/.bashrc ]; then
-    . $HOME/.bashrc
-fi
-
-export PYENV_ROOT=~/.pyenv
-export PATH=$PYENV_ROOT/shims:$PATH
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-export PYTHON_CONFIGURE_OPTS="--enable-framework"
 
 # Final fallback in case PATH was clobbered by later scripts.
 if ! command -v claude >/dev/null 2>&1 && [ -x /opt/homebrew/bin/claude ]; then
@@ -53,6 +36,16 @@ fi
 if ! command -v codex >/dev/null 2>&1 && [ -x /opt/homebrew/bin/codex ]; then
   alias codex='/opt/homebrew/bin/codex'
 fi
+
+# Starship prompt
+eval "$(starship init zsh)"
+
+# Modern CLI tools
+alias ls='eza --icons'
+alias ll='eza -la --icons'
+alias cat='bat'
+eval "$(zoxide init zsh)"
+source <(fzf --zsh)
 
 # Other keyboard shortcuts
 alias claude-mcp="open ~/Library/Application\ Support/Claude/claude_desktop_config.json"
