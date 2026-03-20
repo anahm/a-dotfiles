@@ -21,10 +21,12 @@ Personal dotfiles for macOS. Covers zsh, vim, and git config.
 git clone https://github.com/anahm/a-dotfiles.git ~/Documents/Code/a-dotfiles
 cd ~/Documents/Code/a-dotfiles
 
-ln -s "$PWD/.zshrc"      ~/.zshrc
-ln -s "$PWD/.vimrc"      ~/.vimrc
-ln -s "$PWD/.gitconfig"  ~/.gitconfig
-ln -s "$PWD/.vim"        ~/.vim
+ln -s "$PWD/.zshrc"              ~/.zshrc
+ln -s "$PWD/.vimrc"              ~/.vimrc
+ln -s "$PWD/.gitconfig"          ~/.gitconfig
+ln -s "$PWD/.vim"                ~/.vim
+mkdir -p ~/.config/ghostty
+ln -s "$PWD/.config/ghostty/config" ~/.config/ghostty/config
 ```
 
 ### 2. Install Homebrew packages

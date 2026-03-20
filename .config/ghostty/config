@@ -1,0 +1,52 @@
+# Ghostty config — migrated from iTerm2 Default profile
+# Generated 2026-03-16
+
+# Font
+font-family = Monaco
+font-size = 13
+
+# Colors — Solarized Dark (custom variant from iTerm2 profile)
+background = #001E26
+foreground = #708183
+cursor-color = #708183
+cursor-text = #002731
+selection-background = #002731
+selection-foreground = #81908F
+
+# ANSI palette
+palette = 0=#002731
+palette = 1=#D01B24
+palette = 2=#728905
+palette = 3=#A57705
+palette = 4=#2075C7
+palette = 5=#C61B6E
+palette = 6=#259185
+palette = 7=#E9E2CB
+palette = 8=#001E26
+palette = 9=#BD3612
+palette = 10=#465A61
+palette = 11=#52676F
+palette = 12=#708183
+palette = 13=#5856B9
+palette = 14=#81908F
+palette = 15=#FCF4DC
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Scrollback
+scrollback-limit = 100000
+
+# Bell
+bell-features = no-system,no-audio,no-attention
+
+# Window
+window-inherit-working-directory = true
+background-opacity = 1.0
+
+# Splits (remapped from iTerm2 muscle memory)
+# Cmd+K default (clear_screen) moved to Cmd+Shift+K
+keybind = super+k=new_split:right
+keybind = super+j=new_split:down
+keybind = super+shift+k=clear_screen

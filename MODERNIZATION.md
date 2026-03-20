@@ -28,7 +28,7 @@ Solid macOS developer setup from roughly 2020-2022 era. Good bones (tmux, vim, g
 | 6 | ~~Starship prompt~~ ✅ | Low | Medium |
 | 7 | ~~vim-plug (replace Vundle)~~ ✅ | Very Low | Medium |
 | 8 | ~~lazygit~~ ✅ skipped | Low | Medium |
-| 9 | Ghostty terminal | Low | Medium |
+| 9 | ~~Ghostty terminal~~ ✅ | Low | Medium |
 | 10 | ~~Document dotfile deployment~~ ✅ | Medium | Medium |
 | 11 | ~~Cleanup bash config + committed bundles~~ ✅ | Low | Low |
 
@@ -172,12 +172,14 @@ lazygit is only valuable if you regularly stage individual hunks or do interacti
 
 ---
 
-### 9. Consider Ghostty over iTerm2
+### 9. ~~Switch to Ghostty~~ ✅
 
-- [ ] Download Ghostty from https://ghostty.org
-- [ ] Migrate color scheme: Ghostty supports Solarized Dark natively
-- [ ] Config lives at `~/.config/ghostty/config` (plain text, version-controllable)
-- [ ] Remove `com.googlecode.iterm2.plist` from the repo; keep only `.itermcolors` files for reference
+**Status: Complete (2026-03-16)**
+
+- [x] Switched to Ghostty
+- [x] Migrated iTerm2 Default profile colors, font (Monaco 13), cursor, scrollback, bell settings
+- [x] Config at `~/.config/ghostty/config` → symlinked to dotfiles repo at `.config/ghostty/config`
+- [x] `com.googlecode.iterm2.plist` already removed in item 11; `.itermcolors` files kept for reference
 
 **Why:** GPU-accelerated, ~2ms key-to-screen latency vs iTerm2's ~15ms. Config is plain text rather than binary plist. Built by Mitchell Hashimoto.
 
@@ -209,5 +211,5 @@ lazygit is only valuable if you regularly stage individual hunks or do interacti
 
 ## Notes
 
-- All items complete or skipped. **Item 9 (Ghostty)** is the only remaining optional item.
+- All items complete or skipped. Modernization is fully done.
 - Items can be done independently in any order.
